@@ -1,0 +1,23 @@
+<ion-header [translucent]="true" mode="ios" class="ion-no-border" *ngIf="(store$ | async) as store">
+  <ion-toolbar mode="ios">
+    <ion-title>{{ store.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="container">
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="12">
+          <app-slider [store]="store"></app-slider>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
+<ion-footer mode="ios">
+  <ion-toolbar color="primary" mode="ios">
+    <ion-button (click)="onAddress()" expand="block" color="dark" size="small" fill="clear">
+      Mi Dirección
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
