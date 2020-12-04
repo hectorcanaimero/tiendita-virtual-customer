@@ -16,7 +16,7 @@ export class DataService {
   getStore = (store: string) => this.db.collection('store').doc(store)
     .valueChanges().pipe(trace('getCustomerStore'));
 
-  getCategories = (store: string) => this.db.collection('store').doc(store).collection('categories')
+  getCategories = (store: string) => this.db.collection('store').doc(store).collection('categories', ref => ref.orderBy('order'))
     .snapshotChanges().pipe(trace('getCustomerCategories'));
 
   getProductCategory = (store: string, category: string) => this.db.collection('store').doc(store)

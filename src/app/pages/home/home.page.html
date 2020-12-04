@@ -3,12 +3,21 @@
     <ion-title>{{ store.name }}</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content>
+<ion-content *ngIf="(store$ | async) as store">
   <div class="container">
     <ion-grid fixed>
       <ion-row>
         <ion-col size="12">
           <app-slider [store]="store"></app-slider>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngFor="let item of categories$ | async">
+        <ion-col size="12">
+          <ion-label>
+            <h1 class="titulo-categories">{{ item.name }}</h1>
+          </ion-label>
+          <app-product-list [store]="store.slug" [category]="item" *ngIf="item.type === 'list'"></app-product-list>
+          <app-product-card *ngIf="item.type === 'card'"></app-product-card>
         </ion-col>
       </ion-row>
     </ion-grid>

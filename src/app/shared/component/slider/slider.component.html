@@ -1,14 +1,5 @@
-<ion-slides mode="ios" pager="ios" scrollbar="ios">
-  <ion-slide>
-    <h1>Awesome Slide Content 1</h1>
-  </ion-slide>
-  <ion-slide>
-    <h1>Awesome Slide Content 2</h1>
-  </ion-slide>
-  <ion-slide>
-    <h1>Awesome Slide Contenv3t</h1>
-  </ion-slide>
-  <ion-slide>
-    <h1>Awesome Slide Content 4</h1>
+<ion-slides mode="ios" pager="false" scrollbar="ios" [options]="options">
+  <ion-slide *ngFor="let item of items$ | async">
+    <img [src]="item.image.url" alt="">
   </ion-slide>
 </ion-slides>
