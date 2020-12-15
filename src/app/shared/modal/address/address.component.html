@@ -1,3 +1,45 @@
-<p>
-  address works!
-</p>
+<ion-header class="ion-no-border" mode="ios">
+  <ion-toolbar mode="ios">
+    <ion-button (click)="onClose()" fill="clear" color="danger" slot="start">
+      <ion-icon slot="icon-only" name="chevron-down-outline"></ion-icon>
+    </ion-button>
+    <ion-title>Mis Datos</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12">
+        <form [formGroup]="form">
+          <ion-item>
+            <ion-label position="floating">Nombre y Apellido <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input required formControlName="name" type="text"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Identificación <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input required formControlName="identification" type="text" inputmode="numeric"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Teléfono <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input required formControlName="phone" type="tel" inputmode="numeric"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">E-mail</ion-label>
+            <ion-input formControlName="email" type="email"></ion-input>
+          </ion-item>
+          <ion-item>
+          <ion-label position="floating">Dirección <ion-text color="danger">*</ion-text></ion-label>
+            <ion-textarea required formControlName="address" rows="4"></ion-textarea>
+          </ion-item>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer mode="ios">
+  <ion-toolbar mode="ios" color="primary">
+    <ion-button (click)="onSend()" [disabled]="form.invalid" expand="full" mode="ios" color="primary">
+      Agregar
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

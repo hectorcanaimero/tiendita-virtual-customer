@@ -1,4 +1,6 @@
+import { DataService } from './../../services/data.service';
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-status',
@@ -7,8 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StatusComponent implements OnInit {
 
-  constructor() { }
+  cart$: any = [];
 
-  ngOnInit() {}
+  constructor(
+    private data$: DataService,
+    private modalCtrl: ModalController
+  ) { }
 
+  ngOnInit() {
+    this.cart$ = this.data$.watchStorage('cart');
+  }
+
+
+
+  onClose = () => this.modalCtrl.dismiss();
 }

@@ -1,5 +1,5 @@
 <ion-slides mode="ios" pager="false" scrollbar="ios" [options]="options">
   <ion-slide *ngFor="let item of items$ | async">
-    <img [src]="item.image.url" alt="">
+    <img [src]="item.image.url" alt="" class="slider-img">
   </ion-slide>
 </ion-slides>

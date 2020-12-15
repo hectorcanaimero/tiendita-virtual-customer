@@ -1,0 +1,22 @@
+ion-button {
+    --padding-start: 10px;
+    --padding-end: 10px;
+}
+
+.img-product {
+    margin: 0 auto;
+    width: auto;
+    height: 100%;
+    max-height: 200px;
+}
+
+.product-price {
+    font-weight: 700;
+    color: #ca0909;
+}
+
+ion-input {
+    --background: #fafafa;
+    text-align: center;
+    --color: red;
+}

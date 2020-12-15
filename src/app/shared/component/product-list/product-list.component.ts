@@ -1,22 +1,29 @@
-import { DataService } from 'src/app/shared/services/data.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
+
+import { NavController } from '@ionic/angular';
+
 import { timer, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+
+import { DataService } from 'src/app/shared/services/data.service';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss'],
 })
+
 export class ProductListComponent implements OnInit {
 
   @Input() store: string = '';
   @Input() category: any = [];
+  @Output() count: number = 0;
 
   items$: Observable<any>;
 
   constructor(
-    private data$: DataService
+    private data$: DataService,
+    private navCtrl: NavController
   ) { }
 
   ngOnInit() {
@@ -25,8 +32,6 @@ export class ProductListComponent implements OnInit {
   }
 
   onProducts = () => {
-    console.log(this.store);
-    console.log(this.category.id);
     this.items$ = this.data$.getProductCategory(this.store, this.category.id)
     .pipe(
       map(actions => {
@@ -38,7 +43,7 @@ export class ProductListComponent implements OnInit {
         });
       })
     );
-    this.items$.subscribe(res => console.log(res));
   }
 
+  onLink = (item: string) => this.navCtrl.navigateForward(`store/${this.store}/product/${item}`);
 }

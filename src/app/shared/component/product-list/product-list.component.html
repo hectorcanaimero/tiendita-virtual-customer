@@ -1,3 +1,17 @@
-<p>
-  product-list works!
-</p>
+<ion-grid fixed>
+  <ion-row>
+    <ion-col size="12" size-md="6" size-xl="4" *ngFor="let item of items$ | async" >
+      <ion-item (click)="onLink(item.id)">
+        <ion-thumbnail slot="end">
+          <img [src]="item.image.url" />
+        </ion-thumbnail>
+        <ion-label>
+          <p>{{ item.category.name }}</p>
+          <h2 class="b-5 ion-text-wrap">{{ item.name }}</h2>
+          <p>{{ item.description }}</p>
+          <h2 class="prico">{{ item.price | currency }}</h2>
+        </ion-label>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+</ion-grid>

@@ -1,3 +1,17 @@
-<p>
-  status works!
-</p>
+<ion-header class="ion-no-border" mode="ios">
+  <ion-toolbar mode="ios">
+    <ion-title>Status do Pedido</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <pre>
+    <code>{{ cart$ | async | json }}</code>
+  </pre>
+</ion-content>
+<ion-footer mode="ios">
+  <ion-toolbar mode="ios" color="primary">
+    <ion-button (click)="onClose()" expand="full" color="primary">
+      Cerrar 
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
